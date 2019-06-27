@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
-export default class AddContact extends React.Component {
+export default class editElement extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			list: [],
-			unicorn: "",
-			storm: "",
-			place: "",
-			fire: ""
+			red: "",
+			white: "",
+			blue: "",
+			yellow: ""
 		};
 	}
 	
@@ -18,7 +18,7 @@ export default class AddContact extends React.Component {
 		return (
 			<div className="container">
 				<div>
-					<h1 className="text-center mt-5">Add a new contact</h1>
+					<h1 className="text-center mt-5">Edit contact</h1>
 					
 					<form>
 						<div className="form-group">
@@ -29,10 +29,10 @@ export default class AddContact extends React.Component {
 								aria-label="Default"
 								aria-describedby="inputGroup-sizing-default"
 								
-								value={this.state.unicorn}
+								value={this.state.red}
 								onChange={event => {
 									this.setState({
-										unicorn: event.target.value
+										red: event.target.value
 									});
 								}} />
 						</div>
@@ -44,10 +44,10 @@ export default class AddContact extends React.Component {
 								aria-label="Default"
 								aria-describedby="inputGroup-sizing-default"
 								
-								value={this.state.storm}
+								value={this.state.white}
 								onChange={event => {
 									this.setState({
-										storm: event.target.value
+										white: event.target.value
 									});
 								}}/>
 						</div>
@@ -59,10 +59,10 @@ export default class AddContact extends React.Component {
 								aria-label="Default"
 								aria-describedby="inputGroup-sizing-default"
 								
-								value={this.state.place}
+								value={this.state.blue}
 								onChange={event => {
 									this.setState({
-										place: event.target.value
+										blue: event.target.value
 									});
 								}}/>
 						</div>
@@ -74,33 +74,28 @@ export default class AddContact extends React.Component {
 								aria-label="Default"
 								aria-describedby="inputGroup-sizing-default"
 								
-								value={this.state.fire}
+								value={this.state.yellow}
 								onChange={event => {
 									this.setState({
-										fire: event.target.value
+										yellow: event.target.value
 									});
 								}}/>
 						</div>
 						<Context.Consumer>
-							{({ store, actions }) => {
-							
-							var selectedContact = store.contacts.filter((item) => {
-								return item.id === pageId;
-							});
-							
+							{({ actions }) => {
 							return (
 								<div>
 									<button type="button" className="btn btn-primary form-control" 
 										onClick={() => {
 											const contact = {
-												full_name:this.state.unicorn, email:this.state.storm, phone:this.state.place, address:this.state.fire
+												full_name:this.state.red, e_mail:this.state.white, phone:this.state.blue, address:this.state.yellow
 											};
-											actions.addContact(contact);
+											actions.editElement(contact);
 											
 										}
 											
 										} 
-								>save</button>
+								>Update Contact</button>
 								
 									<Link className="mt-3 w-100 text-center" to="/">or get back to contacts</Link>
 								</div>
